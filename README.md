@@ -1,13 +1,18 @@
+<p align="center"><img src="./misc/progress_small.png" width="15%" /></p>
+
+# `progress` - a CLI progress bar
+
 [![asciicast]
 (https://asciinema.org/a/dNsAmudFCL1f9tUES8fz0EXT1.png)]
 (https://asciinema.org/a/dNsAmudFCL1f9tUES8fz0EXT1)
 
-# `progress` - a CLI progress bar
-
-I don't want to bore you to death. Really. I just needed a command line
-progress bar and none of the options I found on GitHub or via Google were much
-to my liking, what with their camel cased names and lack of `operator<<`
-overload and such.
+I just needed a command line progress bar and none of the options I found on
+GitHub or via Google were much to my liking, what with their camel cased names
+and lack of `operator<<` overload and such. Now this is certainly not the best
+ever implementation of anything, I just hacked this together real quick. Ah
+yeah btw, the code supposed to figure out terminal size on Windows - I didn't
+test that, as I would've needed to boot up the Windows VM and build it there,
+yadda yadda, maybe somebody else can do it.
 
 
 ## Using it
@@ -56,8 +61,31 @@ int main() {
 
 and you get
 ```shell
-[----->                             ]  10% - 0:42.312 elapsed
+[----->                             ]  10% -  0:42.312 elapsed
 ```
+
+Of course there are a bunch more things you can do. If you don't like it to
+auto increment when using `operator<<`, just give it a `false` there (4th ctor
+argument). You might then want to use `++` or `--` in exactly the way you'd
+expect, or `step(int steps)`, or `set(int pos)`. Essentially, the following
+works:
+```cpp
+flrn::progress_bar pb{-13, 156, 80, false, true};
+
+++pb;
+pb++;
+--pb;
+pb--;
+
+pb.step(5);   // move 5 steps forward
+pb.set(137);  // go to progress 137
+```
+
+If you try to move outside `min` and `max`, it simply doesn't do that. If you
+try to give it a `min` that is bigger than `max`, it throws. If you try to push
+`width` (percentage of terminal width) to 0, it throws.
+
+_It is not pretty._
 
 
 ## More
