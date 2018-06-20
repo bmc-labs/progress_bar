@@ -2,9 +2,9 @@
 
 # `progress` - a CLI progress bar
 
-[![asciicast]
-(https://asciinema.org/a/dNsAmudFCL1f9tUES8fz0EXT1.png)]
-(https://asciinema.org/a/dNsAmudFCL1f9tUES8fz0EXT1)
+<a href="https://asciinema.org/a/dNsAmudFCL1f9tUES8fz0EXT1" target="_blank">
+  <img src="https://asciinema.org/a/dNsAmudFCL1f9tUES8fz0EXT1.png" />
+</a>
 
 I just needed a command line progress bar and none of the options I found on
 GitHub or via Google were much to my liking, what with their camel cased names
