@@ -30,7 +30,7 @@ int main() {
   flrn::progress_bar pb{
     -13,   // min, also initial value
     156,   // max
-    60,    // width in percent of screen (including percentage and time)
+    80,    // width in percent of screen (including percentage and time)
     true,  // auto increment when outputting
     true   // show time at the end
   };
@@ -41,7 +41,7 @@ int main() {
 
   for (auto & e : vec) {
     e *= 2;
-    std::this_thread::sleep_for(100ms);
+    std::this_thread::sleep_for(50ms);
     std::cout << pb;
   }
 
