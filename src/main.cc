@@ -14,28 +14,34 @@
 // limitations under the License.
 //
 
+#include <chrono>
 #include <iostream>
 #include <numeric>
+#include <thread>
 #include <vector>
 
 #include "progress.h"
 
 
+using namespace std::chrono_literals;
+
+
 int main() {
   flrn::progress_bar pb{
-    0,     // min, also initial value
-    100,   // max
-    50,    // width in percent of screen (including percentage and time)
+    -13,   // min, also initial value
+    156,   // max
+    60,    // width in percent of screen (including percentage and time)
     true,  // auto increment when outputting
     true   // show time at the end
   };
 
   // generate some data
-  std::vector<int> vec(100);
+  std::vector<int> vec(pb.size());
   std::iota(std::begin(vec), std::end(vec), 42);
 
   for (auto & e : vec) {
     e *= 2;
+    std::this_thread::sleep_for(100ms);
     std::cout << pb;
   }
 
