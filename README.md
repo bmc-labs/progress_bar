@@ -1,5 +1,7 @@
 # `progress` - a CLI progress bar
 
+<script src="https://asciinema.org/a/dNsAmudFCL1f9tUES8fz0EXT1.js" id="asciicast-dNsAmudFCL1f9tUES8fz0EXT1" async></script>
+
 I don't want to bore you to death. Really. I just needed a command line
 progress bar and none of the options I found on GitHub or via Google were much
 to my liking, what with their camel cased names and lack of `operator<<`
