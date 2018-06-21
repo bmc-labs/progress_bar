@@ -1,6 +1,6 @@
 <p align="center"><img src="./misc/progress_small.png" width="15%" /></p>
 
-# `progress` - a CLI progress bar
+# `progress_bar` - a CLI progress bar
 
 <a href="https://asciinema.org/a/dNsAmudFCL1f9tUES8fz0EXT1" target="_blank">
   <img src="https://asciinema.org/a/dNsAmudFCL1f9tUES8fz0EXT1.png" />
@@ -28,7 +28,7 @@ So basically you just go
 #include <thread>
 #include <vector>
 
-#include "progress.h"
+#include "progress_bar.h"
 
 
 using namespace std::chrono_literals;
@@ -84,8 +84,6 @@ pb.set(137);  // go to progress 137
 If you try to move outside `min` and `max`, it simply doesn't do that. If you
 try to give it a `min` that is bigger than `max`, it throws. If you try to push
 `width` (percentage of terminal width) to 0, it throws.
-
-_It is not pretty._
 
 
 ## More

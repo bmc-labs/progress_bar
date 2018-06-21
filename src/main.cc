@@ -20,7 +20,7 @@
 #include <thread>
 #include <vector>
 
-#include "progress.h"
+#include "progress_bar.h"
 
 
 using namespace std::chrono_literals;
