@@ -14,8 +14,8 @@
 // limitations under the License.
 //
 
-#ifndef PROGRESS_INCLUDE_PROGRESS_H_
-#define PROGRESS_INCLUDE_PROGRESS_H_
+#ifndef PROGRESS_INCLUDE_PROGRESS_BAR_H_
+#define PROGRESS_INCLUDE_PROGRESS_BAR_H_
 
 #include <chrono>
 #include <cmath>
@@ -182,5 +182,5 @@ std::ostream & operator<<(std::ostream & os, flrn::progress_bar & pb) {
 
 }  // namespace flrn
 
-#endif  // PROGRESS_INCLUDE_PROGRESS_H_
+#endif  // PROGRESS_INCLUDE_PROGRESS_BAR_H_
 
