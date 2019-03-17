@@ -2,8 +2,8 @@
 
 # `progress_bar` - a CLI progress bar
 
-<a href="https://asciinema.org/a/dNsAmudFCL1f9tUES8fz0EXT1" target="_blank">
-  <img src="https://asciinema.org/a/dNsAmudFCL1f9tUES8fz0EXT1.png" />
+<a href="https://asciinema.org/a/AHgsiUfgPZ90U2kn90swS93mj" target="_blank">
+  <img src="https://asciinema.org/a/AHgsiUfgPZ90U2kn90swS93mj.svg" />
 </a>
 
 I just needed a command line progress bar and none of the options I found on
