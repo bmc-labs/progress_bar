@@ -48,8 +48,11 @@ class progress_bar
   friend std::ostream & operator<<(std::ostream & os, self_t & pb);
 
 public:
-  progress_bar(
-    int min, int max, std::size_t width, bool auto_inc, bool show_time)
+  progress_bar(std::size_t min,
+               std::size_t max,
+               std::size_t width,
+               bool        auto_inc,
+               bool        show_time)
    : _min(min),
      _max(max),
      _current(min),
@@ -65,7 +68,7 @@ public:
     }
   }
 
-  int size() const noexcept { return _max - _min; }
+  std::size_t size() const noexcept { return _max - _min; }
 
   self_t & operator++() noexcept {
     if (_current < _max) { ++_current; }
@@ -95,9 +98,11 @@ public:
     return *this;
   }
 
-  void step(int steps = 1) noexcept { _current = clamp(_current + steps); }
+  void step(std::size_t steps = 1) noexcept {
+    _current = clamp(_current + steps);
+  }
 
-  void set(int value) noexcept { _current = clamp(value); }
+  void set(std::size_t value) noexcept { _current = clamp(value); }
 
   std::string disp() noexcept {
     if (_auto_inc) { step(); }
@@ -128,13 +133,13 @@ public:
         ss << ' ';
       }
     }
-    ss << "] " << std::setw(3) << static_cast<int>(progress) << '%';
+    ss << "] " << std::setw(3) << static_cast<std::size_t>(progress) << '%';
 
     if (_show_time) {
       std::chrono::duration<double> elapsed =
         std::chrono::high_resolution_clock::now() - _timestamp;
 
-      auto minutes = static_cast<int>(elapsed.count()) / 60;
+      auto minutes = static_cast<std::size_t>(elapsed.count()) / 60;
 
       ss << " - " << std::setw(2) << minutes << ":" << std::right
          << std::setfill('0') << std::fixed << std::setprecision(2)
@@ -145,13 +150,13 @@ public:
   }
 
 private:
-  int clamp(int input) const noexcept {
+  std::size_t clamp(std::size_t input) const noexcept {
     if (input < _min) { return _min; }
     if (input > _max) { return _max; }
     return input;
   }
 
-  int term_width() const noexcept {
+  std::size_t term_width() const noexcept {
 #ifdef _WIN32
     CONSOLE_SCREEN_BUFFER_INFO info;
     GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &info);
@@ -164,9 +169,9 @@ private:
   }
 
 private:
-  const int                                                   _min;
-  const int                                                   _max;
-  int                                                         _current;
+  const std::size_t                                           _min;
+  const std::size_t                                           _max;
+  std::size_t                                                 _current;
   const std::size_t                                           _width;
   bool                                                        _auto_inc;
   bool                                                        _show_time;

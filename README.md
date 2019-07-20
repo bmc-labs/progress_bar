@@ -36,7 +36,7 @@ using namespace std::chrono_literals;
 
 int main() {
   bmc::progress_bar pb{
-    -13,   // min, also initial value
+    13,    // min, also initial value
     156,   // max
     80,    // width in percent of screen (including percentage and time)
     true,  // auto increment when outputting
