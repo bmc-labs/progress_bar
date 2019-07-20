@@ -35,7 +35,7 @@ using namespace std::chrono_literals;
 
 
 int main() {
-  flrn::progress_bar pb{
+  bmc::progress_bar pb{
     -13,   // min, also initial value
     156,   // max
     80,    // width in percent of screen (including percentage and time)
@@ -70,7 +70,7 @@ argument). You might then want to use `++` or `--` in exactly the way you'd
 expect, or `step(int steps)`, or `set(int pos)`. Essentially, the following
 works:
 ```cpp
-flrn::progress_bar pb{-13, 156, 80, false, true};
+bmc::progress_bar pb{-13, 156, 80, false, true};
 
 ++pb;
 pb++;

@@ -1,4 +1,5 @@
-// Copyright 2018 Florian Eich <florian.eich@gmail.com>
+// Copyright 2018 bmc::labs GmbH.
+// Author: Florian Eich <florian@bmc-labs.com>
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -25,7 +26,7 @@ using namespace std::chrono_literals;
 
 
 int main() {
-  flrn::progress_bar pb{
+  bmc::progress_bar pb{
     -13,   // min, also initial value
     156,   // max
     80,    // width in percent of screen (including percentage and time)
@@ -47,4 +48,3 @@ int main() {
 
   return 0;
 }
-

@@ -1,4 +1,5 @@
-// Copyright 2018 Florian Eich <florian.eich@gmail.com>
+// Copyright 2018 bmc::labs GmbH.
+// Author: Florian Eich <florian@bmc-labs.com>
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -33,7 +34,7 @@
 using namespace std::chrono_literals;
 
 
-namespace flrn {
+namespace bmc {
 
 
 constexpr const std::size_t MIN_LINE_LENGTH{50};
@@ -173,12 +174,11 @@ private:
 };
 
 
-inline std::ostream & operator<<(std::ostream & os, flrn::progress_bar & pb) {
+inline std::ostream & operator<<(std::ostream & os, bmc::progress_bar & pb) {
   os << "\33[2K\033[A\33[2K\r" << pb.disp() << '\n';
   return os;
 }
 
-}  // namespace flrn
+}  // namespace bmc
 
 #endif  // PROGRESS_INCLUDE_PROGRESS_BAR_H_
-
