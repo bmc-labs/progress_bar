@@ -1,4 +1,4 @@
-# Copyright 2018 Florian Eich <florian.eich@gmail.com>
+# Copyright 2018 bmc::labs GmbH.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,10 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#
 # this is just a super simple showoff executable running the code in the README
-add_executable (${PROJECT_NAME} main.cc)
-target_include_directories (${PROJECT_NAME} PUBLIC
+set (TARGET progress)
+add_executable (${TARGET} main.cc)
+target_include_directories (${TARGET} PUBLIC
   ${PROJECT_SOURCE_DIR}/include
 )
 

@@ -173,7 +173,7 @@ private:
 };
 
 
-std::ostream & operator<<(std::ostream & os, flrn::progress_bar & pb) {
+inline std::ostream & operator<<(std::ostream & os, flrn::progress_bar & pb) {
   os << "\33[2K\033[A\33[2K\r" << pb.disp() << '\n';
   return os;
 }
