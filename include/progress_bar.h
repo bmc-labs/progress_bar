@@ -53,70 +53,70 @@ public:
                std::size_t width,
                bool        auto_inc,
                bool        show_time)
-   : _min(min),
-     _max(max),
-     _current(min),
-     _width(width),
-     _auto_inc(auto_inc),
-     _show_time(show_time),
-     _timestamp(std::chrono::high_resolution_clock::now()) {
-    if (_max <= _min) {
+   : min_(min),
+     max_(max),
+     current_(min),
+     width_(width),
+     auto_inc_(auto_inc),
+     show_time_(show_time),
+     timestamp_(std::chrono::high_resolution_clock::now()) {
+    if (max_ <= min_) {
       throw std::range_error("max must be greater than min");
     }
-    if (!_width) {
+    if (!width_) {
       throw std::invalid_argument("width cannot be 0% of terminal");
     }
   }
 
-  std::size_t size() const noexcept { return _max - _min; }
+  std::size_t size() const noexcept { return max_ - min_; }
 
   self_t & operator++() noexcept {
-    if (_current < _max) { ++_current; }
+    if (current_ < max_) { ++current_; }
     return *this;
   }
 
   self_t operator++(int) noexcept {
-    if (_current < _max) {
+    if (current_ < max_) {
       auto tmp{*this};
-      ++_current;
+      ++current_;
       return tmp;
     }
     return *this;
   }
 
   self_t & operator--() noexcept {
-    if (_current > _min) { --_current; }
+    if (current_ > min_) { --current_; }
     return *this;
   }
 
   self_t operator--(int) noexcept {
-    if (_current > _min) {
+    if (current_ > min_) {
       auto tmp{*this};
-      --_current;
+      --current_;
       return tmp;
     }
     return *this;
   }
 
   void step(std::size_t steps = 1) noexcept {
-    _current = clamp(_current + steps);
+    current_ = clamp(current_ + steps);
   }
 
-  void set(std::size_t value) noexcept { _current = clamp(value); }
+  void set(std::size_t value) noexcept { current_ = clamp(value); }
 
   std::string disp() noexcept {
-    if (_auto_inc) { step(); }
+    if (auto_inc_) { step(); }
 
-    auto line_length{term_width() * _width / 100};
+    auto line_length{termwidth_() * width_ / 100};
     if (line_length < MIN_LINE_LENGTH) {
-      _show_time = false;
+      show_time_ = false;
     } else {
       line_length -= TIME_OUTPUT_LENGTH;
     }
     auto bar_length{line_length - MISC_SYMBOLS_LENGTH};
 
     auto progress{
-      _current == _max ? 100.0 : (_current - _min) / ((_max - _min) / 100.0)};
+      current_ == max_ ? 100.0 : (current_ - min_) / ((max_ - min_) / 100.0)};
 
     auto position{progress == 100.0 ? bar_length
                                     : static_cast<std::size_t>(std::round(
@@ -135,9 +135,9 @@ public:
     }
     ss << "] " << std::setw(3) << static_cast<std::size_t>(progress) << '%';
 
-    if (_show_time) {
+    if (show_time_) {
       std::chrono::duration<double> elapsed =
-        std::chrono::high_resolution_clock::now() - _timestamp;
+        std::chrono::high_resolution_clock::now() - timestamp_;
 
       auto minutes = static_cast<std::size_t>(elapsed.count()) / 60;
 
@@ -151,12 +151,12 @@ public:
 
 private:
   std::size_t clamp(std::size_t input) const noexcept {
-    if (input < _min) { return _min; }
-    if (input > _max) { return _max; }
+    if (input < min_) { return min_; }
+    if (input > max_) { return max_; }
     return input;
   }
 
-  std::size_t term_width() const noexcept {
+  std::size_t termwidth_() const noexcept {
 #ifdef _WIN32
     CONSOLE_SCREEN_BUFFER_INFO info;
     GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &info);
@@ -169,13 +169,13 @@ private:
   }
 
 private:
-  const std::size_t                                           _min;
-  const std::size_t                                           _max;
-  std::size_t                                                 _current;
-  const std::size_t                                           _width;
-  bool                                                        _auto_inc;
-  bool                                                        _show_time;
-  std::chrono::time_point<std::chrono::high_resolution_clock> _timestamp;
+  const std::size_t                                           min_;
+  const std::size_t                                           max_;
+  std::size_t                                                 current_;
+  const std::size_t                                           width_;
+  bool                                                        auto_inc_;
+  bool                                                        show_time_;
+  std::chrono::time_point<std::chrono::high_resolution_clock> timestamp_;
 };
 
 
