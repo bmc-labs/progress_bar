@@ -8,7 +8,7 @@ build:
   stage: build
   before_script:
     - apk update && apk upgrade
-    - apk add gcc make cmake
+    - apk add gcc g++ make cmake
   script:
     - mkdir build && cd build
     - CC=gcc CXX=g++ cmake ..
