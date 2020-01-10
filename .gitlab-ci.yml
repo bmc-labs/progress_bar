@@ -2,13 +2,13 @@
 # use the official gcc image, based on debian
 # can use verions as well, like gcc:5.2
 # see https://hub.docker.com/_/gcc/
-image: gcc
+image: alpine:latest
 
 build:
   stage: build
   before_script:
     - apk update && apk upgrade
-    - apk add make cmake
+    - apk add gcc make cmake
   script:
     - mkdir build && cmake ..
     - make progress
