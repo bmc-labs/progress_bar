@@ -11,7 +11,7 @@ build:
     - apk add gcc make cmake
   script:
     - mkdir build && cd build
-    - cmake ..
+    - CC=gcc CXX=g++ cmake ..
     - make progress
   artifacts:
     paths:
