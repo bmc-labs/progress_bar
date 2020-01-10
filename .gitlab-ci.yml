@@ -9,10 +9,9 @@ build:
   before_script:
     - apk update && apk upgrade
     - apk add gcc make cmake
-    - pwd
-    - ls -al
   script:
-    - mkdir build && cmake ..
+    - mkdir build && cd build
+    - cmake ..
     - make progress
   artifacts:
     paths:
