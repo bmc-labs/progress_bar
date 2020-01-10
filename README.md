@@ -2,6 +2,8 @@
 
 # `progress_bar` - a CLI progress bar
 
+[![pipeline status](https://gitlab.bmc-labs.com/libraries/progress_bar/badges/master/pipeline.svg)](https://gitlab.bmc-labs.com/libraries/progress_bar/commits/master)
+
 <a href="https://asciinema.org/a/ZesQrQgJhN1HEu5nwbzww9GTf" target="_blank">
   <img src="https://asciinema.org/a/ZesQrQgJhN1HEu5nwbzww9GTf.svg" />
 </a>
