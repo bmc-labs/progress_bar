@@ -8,19 +8,16 @@
   <img src="https://asciinema.org/a/ZesQrQgJhN1HEu5nwbzww9GTf.svg" />
 </a>
 
-I just needed a command line progress bar and none of the options I found on
-GitHub or via Google were much to my liking, what with their camel cased names
-and lack of `operator<<` overload and such. Now this is certainly not the best
-ever implementation of anything, I just hacked this together real quick. Ah
-yeah btw, the code supposed to figure out terminal size on Windows - I didn't
-test that, as I would've needed to boot up the Windows VM and build it there,
-yadda yadda, maybe somebody else can do it.
+I needed a command line progress bar and none of the options I found on GitHub
+or via Google were much to my liking, what with their camel cased names and
+lack of `operator<<` overload and such. Now this is certainly not the best ever
+implementation of anything, I just hacked this together real quick. It
+supposedly works on Windows, but I haven't tested that.
 
 
 ## Using it
-It's header only. It has no dependencies other than the STL. It's Apache v2
-licensed (because that's what my template for C++ projects has and I couldn't
-be bothered).
+It's header only. It has no dependencies other than the STL and it's Apache v2
+licensed.
 
 So basically you just go
 ```cpp
